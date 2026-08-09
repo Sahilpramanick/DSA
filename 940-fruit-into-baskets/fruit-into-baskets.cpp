@@ -1,28 +1,24 @@
 class Solution {
 public:
-    int totalFruit(vector<int>& a) {
-       unordered_map<int,int> f;
-       int low=0,high=0;
-       int n=a.size();
-       int res=INT_MIN;
-       for(high=0;high<n;high++)
-       {
-           f[a[high]]++;
-           while(f.size()>2)
-           {
-               f[a[low]]--;
-               if(f[a[low]] ==0)
-               f.erase(a[low]);
-               low++;
-           }
+    int totalFruit(vector<int>& fruits) {
+          int low = 0;
+          int res = INT_MIN;
+          int k = 2;
+          int size = fruits.size();
+          unordered_map<int,int> hash;
+          for(int high=0;high<size;high++){
+                hash[fruits[high]]++;
+                while(hash.size()>k){
+                    hash[fruits[low]]--;
+                    if(hash[fruits[low]]==0){
+                        hash.erase(fruits[low]);
+                    }
+                    low++;
+                }
+                int len = high - low + 1;
+                res = max(len,res);
+          }
+          return res;
 
-
-          
-               int len=high-low+1;
-               res=max(res,len);
-          
-       }
-       return res;
-   }
-
+    }
 };
