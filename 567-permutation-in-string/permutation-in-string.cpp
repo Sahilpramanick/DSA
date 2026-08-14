@@ -26,6 +26,6 @@ public:
             }
         }
         return false;
-
+//solution 1 without using low and high ; 
     }
 };
