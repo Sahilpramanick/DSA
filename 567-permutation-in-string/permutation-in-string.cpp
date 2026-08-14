@@ -15,17 +15,30 @@ public:
         if(c1==c2){
             return true;
         }
-        for(int i =n1;i<n2;i++){
-            c2[s2[i]]++;
-            c2[s2[i-n1]]--;
-            if(c2[s2[i-n1]] == 0){
-                c2.erase(s2[i-n1]);
+        //used low and high
+        int low = 0;
+        int high = n1;
+        while(high<n2){
+            c2[s2[high]]++;
+            c2[s2[low]]--;
+            if(c2[s2[low]]==0){
+                c2.erase(s2[low]);
             }
-            if(c1==c2){
-                return true;
-            }
+            if(c1==c2) return true;
+            low++;
+            high++;
         }
         return false;
-//solution 1 without using low and high ; 
+        // for(int i =n1;i<n2;i++){
+        //     c2[s2[i]]++;
+        //     c2[s2[i-n1]]--;
+        //     if(c2[s2[i-n1]] == 0){
+        //         c2.erase(s2[i-n1]);
+        //     }
+        //     if(c1==c2){
+        //         return true;
+        //     }
+        // }
+        return false;
     }
 };
