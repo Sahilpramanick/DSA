@@ -13,7 +13,7 @@ public:
             maxending = max(v1, v2);
             minending = min(v1, v3);
 
-            res = max(res, max(abs(maxending), abs(minending)));
+            res = max(res, max(maxending, abs(minending)));
         }
 
         return res;
